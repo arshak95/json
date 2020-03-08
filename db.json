@@ -1,0 +1,45 @@
+{
+  "users": [
+    {
+      "login": {},
+      "password": {},
+      "id": {}
+    },
+    {
+      "name": "MANBS",
+      "age": "as",
+      "price": "aS",
+      "id": "IhlUMB5"
+    },
+    {
+      "name": "ARSHAK",
+      "age": "25",
+      "price": "2000",
+      "id": "N2GPhDE"
+    },
+    {
+      "name": "Arshak",
+      "age": "",
+      "price": "",
+      "id": "bB043jl"
+    },
+    {
+      "name": "",
+      "age": "",
+      "price": "",
+      "id": "mpxAkDw"
+    },
+    {
+      "name": "Arshak",
+      "age": "29",
+      "price": "190",
+      "id": "sEVUWgC"
+    },
+    {
+      "name": "Arshak",
+      "age": "12",
+      "price": "3434",
+      "id": "7-H2F87"
+    }
+  ]
+}
