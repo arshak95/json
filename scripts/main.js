@@ -19,10 +19,10 @@ function save() {
     }
     var tfooter = '</table>';
     document.getElementById('wrapper').innerHTML = theader + tbody + tfooter;
-    var name = document.getElementById('name').value;
-    var age = document.getElementById('age').value;
-    var price = document.getElementById('price').value;
     const person = new User(name, age, price);
+    person.name = document.getElementById('name').value;
+    person.age = document.getElementById('age').value;
+    person.price = document.getElementById('price').value;
     console.log('Save Pressed', person, name)
     fetch('http://localhost:8000/users/', {
       method: 'POST',
