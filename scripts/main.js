@@ -25,22 +25,13 @@ function save() {
      console.log('Error', error)
     });
 }
-function returnjson(){
-  getRespons('http://localhost:8000/users/', {users: 'name' })
-  .then(data => console.log(data)) // Result from the `response.json()` call
-  .catch(error => console.error(error))
-
-function getRespons(url, users) {
-  return fetch(url, {
-    credentials: 'same-origin', // 'include', default: 'omit'
-    method: 'GET', // 'GET', 'PUT', 'DELETE', etc.
-    body: JSON.stringify(users), // Coordinate the body type with 'Content-Type'
-    headers: new Headers({
-      'Content-Type': 'application/json'
-    }),
-  })
-  .then(response => response.json())
-}
+function get(){
+  fetch('http://localhost:8000/users/')
+.then(response => response.json())
+.then(data => {
+  console.log(data) 
+})
+.catch(error => console.error(error))
 }
 
    
