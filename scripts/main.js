@@ -5,21 +5,7 @@ function User(name,age,price){
 }
 
 function save() {
-  var inputs =[];
-  inputs[0]=document.getElementById('name').value;
-     inputs[1]=document.getElementById('age').value;
-     inputs[2]=document.getElementById('price').value;
-     var theader = '<table border="1">\n';
-     var tbody = '';
-     for(var i = 0; i< inputs.length;i++){
-        tbody += '<tr>';
-        tbody += '<td>';
-        tbody += inputs[i]  
-        tbody += '</tr>\n';
-    }
-    var tfooter = '</table>';
-    document.getElementById('wrapper').innerHTML = theader + tbody + tfooter;
-    const person = new User(name, age, price);
+    const person = new User();
     person.name = document.getElementById('name').value;
     person.age = document.getElementById('age').value;
     person.price = document.getElementById('price').value;
@@ -39,3 +25,22 @@ function save() {
      console.log('Error', error)
     });
 }
+function returnjson(){
+  getRespons('http://localhost:8000/users/', {users: 'name' })
+  .then(data => console.log(data)) // Result from the `response.json()` call
+  .catch(error => console.error(error))
+
+function getRespons(url, users) {
+  return fetch(url, {
+    credentials: 'same-origin', // 'include', default: 'omit'
+    method: 'GET', // 'GET', 'PUT', 'DELETE', etc.
+    body: JSON.stringify(users), // Coordinate the body type with 'Content-Type'
+    headers: new Headers({
+      'Content-Type': 'application/json'
+    }),
+  })
+  .then(response => response.json())
+}
+}
+
+   
