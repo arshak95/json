@@ -3,9 +3,11 @@
     <head>
         <meta charset="utf-8">
         <title>Json</title>
+        <link rel="stylesheet" href="styles/style.css">
 
     </head>
     <body>
+        <div class="input1">
         <form id="main_form" action="ajax/bottle.php" method="post">
         <div>
         Name <input id="name" type="text" name="name">
@@ -15,17 +17,19 @@
         Price <input id="price" type="text" name="price"> $
         </div>
     </form>
+    </div>
     <p>Click me</p>
     <button onclick="save()">Save to Json</button><br><br>
-    <button onclick="get()">Show</button>
-    <table id="table" border="1">
+   <!-- <button onclick="get()">Show</button> -->
+    <div class="table1">
+     <table id="table" border="1">
        <tr>
            <th>Name</th>
            <th>Age</th>
            <th>Price</th>
        </tr>
-    </table>
-    <p id="wrapper"></p>
+     </table>
+    </div>
     <script src="scripts/main.js"></script>
 
     </body>

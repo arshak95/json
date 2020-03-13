@@ -11,6 +11,18 @@
       "age": "25",
       "price": "200",
       "id": 3
+    },
+    {
+      "name": "Tamara",
+      "age": "24",
+      "price": "700",
+      "id": 4
+    },
+    {
+      "name": "Arshak",
+      "age": "29",
+      "price": "78666",
+      "id": 7
     }
   ]
 }
