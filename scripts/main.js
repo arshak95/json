@@ -26,10 +26,23 @@ function save() {
     });
 }
 function get(){
+  var tbody = '';
   fetch('http://localhost:8000/users/')
 .then(response => response.json())
 .then(data => {
-  console.log(data) 
+  let x = data;
+  var theader = '<table border="1">\n';
+  for(let i = 0; i<x.length;i++){
+    //console.log(data[i]);
+    tbody += '<tr>';
+    tbody += '<td>';
+    tbody += data[i];
+    tbody += '</td>'; 
+    tbody += '</tr>\n';
+}
+var tfooter = '</table>';
+document.getElementById('wrapper').innerHTML = theader + tbody + tfooter;
+ console.log(data) 
 })
 .catch(error => console.error(error))
 }
