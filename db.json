@@ -1,100 +1,16 @@
 {
   "users": [
     {
-      "name": "Arshak",
-      "age": "25",
-      "price": "190",
-      "id": 1
-    },
-    {
-      "name": "hjags",
-      "age": "SAD",
-      "price": "10",
+      "name": "Albert",
+      "age": "36",
+      "price": "188",
       "id": 2
     },
     {
-      "name": "",
-      "age": "",
-      "price": "",
+      "name": "Arshak",
+      "age": "25",
+      "price": "200",
       "id": 3
-    },
-    {
-      "name": "",
-      "age": "",
-      "price": "",
-      "id": 4
-    },
-    {
-      "name": "Arshak",
-      "age": "SAD",
-      "price": "ASD",
-      "id": 5
-    },
-    {
-      "name": "Arshak",
-      "age": "SAD",
-      "price": "10",
-      "id": 6
-    },
-    {
-      "name": "Arshak",
-      "age": "SAD",
-      "price": "10",
-      "id": 7
-    },
-    {
-      "name": "Arshak",
-      "age": "SAD",
-      "price": "10",
-      "id": 8
-    },
-    {
-      "name": "Arshak",
-      "age": "asd",
-      "price": "sad",
-      "id": 9
-    },
-    {
-      "name": "Arshak",
-      "age": "SAD",
-      "price": "10",
-      "id": 10
-    },
-    {
-      "name": "Arshak",
-      "age": "SAD",
-      "price": "10",
-      "id": 11
-    },
-    {
-      "name": "",
-      "age": "",
-      "price": "",
-      "id": 12
-    },
-    {
-      "name": "",
-      "age": "",
-      "price": "",
-      "id": 13
-    },
-    {
-      "name": "",
-      "age": "",
-      "price": "",
-      "id": 14
-    },
-    {
-      "name": "Arshak",
-      "age": "SAD",
-      "price": "10",
-      "id": 15
-    },
-    {
-      "name": "",
-      "age": "",
-      "price": "",
-      "id": 16
     }
   ]
 }

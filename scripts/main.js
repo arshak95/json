@@ -49,7 +49,8 @@ const table = document.getElementById('table');
             return resp.json()
           })
           .then(data => {
-            renderUserRow(data.users)
+            renderUserRow(data)
+            console.log(data);
           })
           .catch(error => console.error(error))
       })();
