@@ -26,35 +26,33 @@ function save() {
     });
 }
 const table = document.getElementById('table');
-  const renderUserRow = (users) => {
-    users.results.map((user) => {
-      const { name :{ first, last }, email, phone} = user;
-      const rowElement = document.createElement('tr');
-      const firstName = document.createElement('td');
-      const lastName = document.createElement('td');
-      const userEmail = document.createElement('td');
-      const userPhone = document.createElement('td');
-      firstName.innerText = first;
-      lastName.innerText = last;
-      userEmail.innerText = email;
-      userPhone.innerText = phone;
-      rowElement.appendChild(firstName);
-      rowElement.appendChild(lastName);
-      rowElement.appendChild(userEmail);
-      rowElement.appendChild(userPhone);
-      table.appendChild(rowElement);
-    })
-  };
-(function(){
-  fetch('http://localhost:8000/users/')
-  .then(resp => {
-    return resp.json()
-  })
-  .then(data => {
-    renderUserRow(data.users)
-  })
-  .catch(error => console.error(error))
-})();
+      const renderUserRow = (users) => {
+        console.log(users);
+        users.map((user) => {
+          const { name, age, price} = user;
+          const rowElement = document.createElement('tr');
+          const userName = document.createElement('td');
+          const userAge = document.createElement('td');
+          const userPrice = document.createElement('td');
+          userName.innerText = name;
+          userAge.innerText = age;
+          userPrice.innerText = price;
+          rowElement.appendChild(userName);
+          rowElement.appendChild(userAge);
+          rowElement.appendChild(userPrice);
+          table.appendChild(rowElement);
+        })
+      };
+      (function (){
+        fetch('http://localhost:8000/users/')
+          .then(resp => {
+            return resp.json()
+          })
+          .then(data => {
+            renderUserRow(data.users)
+          })
+          .catch(error => console.error(error))
+      })();
   
 //   fetch('http://localhost:8000/users/')
 // .then(response => response.json())
