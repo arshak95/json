@@ -25,26 +25,43 @@ function save() {
      console.log('Error', error)
     });
 }
-function get(){
-  var tbody = '';
+const table = document.getElementById('table');
+  const renderUserRow = (users) => {
+    users.results.map((user) => {
+      const { name :{ first, last }, email, phone} = user;
+      const rowElement = document.createElement('tr');
+      const firstName = document.createElement('td');
+      const lastName = document.createElement('td');
+      const userEmail = document.createElement('td');
+      const userPhone = document.createElement('td');
+      firstName.innerText = first;
+      lastName.innerText = last;
+      userEmail.innerText = email;
+      userPhone.innerText = phone;
+      rowElement.appendChild(firstName);
+      rowElement.appendChild(lastName);
+      rowElement.appendChild(userEmail);
+      rowElement.appendChild(userPhone);
+      table.appendChild(rowElement);
+    })
+  };
+(function(){
   fetch('http://localhost:8000/users/')
-.then(response => response.json())
-.then(data => {
-  let x = data;
-  var theader = '<table border="1">\n';
-  for(let i = 0; i<x.length;i++){
-    //console.log(data[i]);
-    tbody += '<tr>';
-    tbody += '<td>';
-    tbody += data[i];
-    tbody += '</td>'; 
-    tbody += '</tr>\n';
-}
-var tfooter = '</table>';
-document.getElementById('wrapper').innerHTML = theader + tbody + tfooter;
- console.log(data) 
-})
-.catch(error => console.error(error))
-}
+  .then(resp => {
+    return resp.json()
+  })
+  .then(data => {
+    renderUserRow(data.users)
+  })
+  .catch(error => console.error(error))
+})();
+  
+//   fetch('http://localhost:8000/users/')
+// .then(response => response.json())
+// .then(data => {   
+//  console.log(data) 
+// })
+// .catch(error => console.error(error))
+// }
 
    
