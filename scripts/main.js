@@ -25,6 +25,7 @@ function save() {
      console.log('Error', error)
     });
 }
+
 const table = document.getElementById('table');
       const renderUserRow = (users) => {
         console.log(users);
@@ -34,12 +35,24 @@ const table = document.getElementById('table');
           const userName = document.createElement('td');
           const userAge = document.createElement('td');
           const userPrice = document.createElement('td');
+          const userEdit = document.createElement('button');
+          userEdit.innerHTML="EDIT";
+          userEdit.addEventListener("click", function(){
+            const answer = window.confirm("You want to change data?")
+               if (answer) {
+                
+               }
+                  else {
+                 }
+          });
+             
           userName.innerText = name;
           userAge.innerText = age;
           userPrice.innerText = price;
           rowElement.appendChild(userName);
           rowElement.appendChild(userAge);
           rowElement.appendChild(userPrice);
+          rowElement.appendChild(userEdit);
           table.appendChild(rowElement);
         })
       };
