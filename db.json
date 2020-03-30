@@ -19,45 +19,42 @@
       "id": 3
     },
     {
-      "name": "gexama lerner",
-      "age": "60000",
-      "price": "3456789",
-      "id": 4
-    },
-    {
-      "name": "",
-      "age": "",
-      "price": "",
+      "name": "gago",
+      "age": "23",
+      "price": "58049",
       "id": 5
-    },
-    {
-      "name": "",
-      "age": "",
-      "price": "",
-      "id": 6
-    },
-    {
-      "name": "",
-      "age": "",
-      "price": "",
-      "id": 7
-    },
-    {
-      "name": "",
-      "age": "",
-      "price": "",
-      "id": 8
     },
     {
       "name": "Arshak",
       "age": "29",
-      "price": "78666",
+      "price": "893274",
+      "id": 6
+    },
+    {
+      "name": "Arshak",
+      "age": "29",
+      "price": "893274",
+      "id": 7
+    },
+    {
+      "name": "Garik",
+      "age": "23",
+      "price": "24.000",
+      "id": 8
+    },
+    {
+      "name": "Garik",
+      "age": "87",
+      "price": "12098",
       "id": 9
     },
     {
       "id": 10
     },
     {
+      "name": "Alex",
+      "age": "26",
+      "price": "160.000",
       "id": 11
     }
   ]

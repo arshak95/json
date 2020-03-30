@@ -1,38 +1,41 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>Json</title>
-        <link rel="stylesheet" href="styles/style.css">
 
-    </head>
-    <body>
-        <div class="input1">
+<head>
+    <meta charset="utf-8">
+    <title>Json</title>
+    <link rel="stylesheet" href="styles/style.css">
+
+</head>
+
+<body>
+    <div class="input1">
         <form id="main_form" action="ajax/bottle.php" method="post">
-        <div>
-        Name <input id="name" type="text" name="name">
-        </div>
-        Age <input id="age" type="text" name="age">
-        <div>
-        Price <input id="price" type="text" name="price"> $
-        </div>
-    </form>
+            <div>
+                Name <input class="input" id="name" type="text" name="name" required pattern="\S+.*" />
+            </div>
+            Age <input required pattern="\S+.*" class="input" id="age" type="text" name="age" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1'); ">
+            <div>
+                Price <input required pattern="\S+.*" class="input" id="price" type="text" name="price" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"> $
+            </div>
+        </form>
     </div>
-    <p>Click me</p>
+    <br>
     <button onclick="save()">Save to Json</button><br><br>
-   <!-- <button onclick="get()">Show</button> -->
+
     <div class="table1">
-     <table id="table" border="1">
-       <tr>
-           <th>Name</th>
-           <th>Age</th>
-           <th>Price</th>
-           <th>Edit your data</th>
-           <th>SAVE</th>
-       </tr>
-     </table>
+        <table id="table" border="1">
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Price</th>
+                <th>Edit your data</th>
+
+            </tr>
+        </table>
     </div>
     <script src="scripts/main.js"></script>
 
-    </body>
-    </html>
+</body>
+
+</html>
