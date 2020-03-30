@@ -10,6 +10,10 @@ function save() {
     person.age = document.getElementById('age').value;
     person.price = document.getElementById('price').value;
     console.log('Save Pressed', person, name)
+    if (person.name, person.age, person.price == "") {
+        alert("Enter a Valid Roll Number");
+        return false;
+    };
     fetch('http://localhost:8000/users/', {
             method: 'POST',
             headers: {
@@ -25,7 +29,7 @@ function save() {
             console.log('Error', error)
         });
 }
-debugger;
+
 let editId = null;
 const renderUserRow = (users) => {
     users.map((user, index) => {
@@ -79,7 +83,7 @@ const renderUserRow = (users) => {
                 console.log(rowElement);
                 fetch('http://localhost:8000/users/', {
                     method: 'post',
-                    body: JSON.stringify(users)
+                    body: JSON.stringify(index)
                 })
             })
         }
@@ -129,3 +133,21 @@ const renderUserRow = (users) => {
 // })
 // .catch(error => console.error(error))
 // }
+
+
+// function of table row delet 
+//try 
+// var table = document.getElementById(tableID);
+//     var rowCount = table.rows.length;
+
+//     for(var i=0; i<rowCount; i++) {
+//         var row = table.rows[i];
+//         var chkbox = row.cells[0].childNodes[0];
+//         if(null != chkbox && true == chkbox.checked) {
+//             table.deleteRow(i);
+//             rowCount--;
+//             i--;
+//}
+// }catch(e) {
+//   alert(e);
+// }   sdfdsfsdf dsfdsf
