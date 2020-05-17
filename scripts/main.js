@@ -1,17 +1,11 @@
-function User(name, age, price) {
-    this.name = name,
-        this.age = age,
-        this.price = price
-}
-
 function save() {
-    const person = new User();
+    const person = {};
     person.name = document.getElementById('name').value;
     person.age = document.getElementById('age').value;
     person.price = document.getElementById('price').value;
     console.log('Save Pressed', person, name)
     if (person.name, person.age, person.price == "") {
-        alert("Enter a Valid Roll Number");
+        alert("Your inputs are empty");
         return false;
     };
     fetch('http://localhost:8000/users/', {
@@ -31,89 +25,115 @@ function save() {
 }
 
 let editId = null;
+
+const EditRow = (user, onSave) => {
+    const { name, age, price, id } = user;
+
+    let rowElement = document.getElementById(id);
+
+    const userName = document.getElementById(`userName-${id}`);
+    const userNameEdit = document.createElement('input')
+    userNameEdit.value = name;
+    rowElement.replaceChild(userNameEdit, userName);
+
+    const userPrice = document.getElementById(`userPrice-${id}`);
+    const userPriceEdit = document.createElement('input')
+    userPriceEdit.value = price;
+    rowElement.replaceChild(userPriceEdit, userPrice);
+
+    const userAge = document.getElementById(`userAge-${id}`);
+    const userAgeEdit = document.createElement('input')
+    userAgeEdit.value = age;
+    rowElement.replaceChild(userAgeEdit, userAge);
+
+    const userSave = document.getElementById(`userSave-${id}`);
+    userSave.addEventListener("click", function() {
+        const updateData = {
+            name: userNameEdit.value,
+            price: userPriceEdit.value,
+            age: userAgeEdit.value,
+        }
+        onSave(updateData);
+    })
+    return rowElement;
+}
+const Row = (user, onPress) => {
+    const { name, age, price, id } = user;
+    let rowElement = document.getElementById(id);
+    if (rowElement) {
+        return rowElement;
+    }
+
+    rowElement = document.createElement('tr');
+    rowElement.id = id
+
+    const userName = document.createElement('td');
+    userName.id = `userName-${id}`;
+    const userAge = document.createElement('td');
+    userAge.id = `userAge-${id}`;
+    const userPrice = document.createElement('td');
+    userPrice.id = `userPrice-${id}`;
+
+    const userEdit = document.createElement('button');
+    userEdit.id = `userEdit-${id}`;
+    userEdit.innerHTML = "EDIT";
+    userEdit.addEventListener("click", function() {
+        onPress()
+    });
+
+    const userSave = document.createElement('button');
+    userSave.id = `userSave-${id}`;
+    userSave.innerHTML = "SAVE";
+
+    userName.innerText = name;
+    userAge.innerText = age;
+    userPrice.innerText = price;
+
+    rowElement.appendChild(userName);
+    rowElement.appendChild(userAge);
+    rowElement.appendChild(userPrice);
+    rowElement.appendChild(userEdit);
+    rowElement.appendChild(userSave);
+    return rowElement;
+}
 const renderUserRow = (users) => {
-    users.map((user, index) => {
-        const { name, age, price } = user;
-
-        let rowElement = document.getElementById(`user-${index}`);
-        if (!rowElement) {
-            rowElement = document.createElement('tr');
-            rowElement.id = `user-${index}`;
-        }
-
-        let userName = document.getElementById(`userName-${index}`);
-        if (!userName) {
-            userName = document.createElement('td');
-            userName.id = `userName-${index}`;
-        }
-
-        let userAge = document.getElementById(`userAge-${index}`);
-        if (!userAge) {
-            userAge = document.createElement('td');
-            userAge.id = `userAge-${index}`;
-        }
-
-        let userPrice = document.getElementById(`userPrice-${index}`);
-        if (!userPrice) {
-            userPrice = document.createElement('td');
-            userPrice.id = `userPrice-${index}`;
-        }
-
-        let userEdit = document.getElementById(`userEdit-${index}`);
-        if (!userEdit) {
-            userEdit = document.createElement('button');
-            userEdit.innerHTML = "EDIT";
-            userEdit.id = `userEdit-${index}`;
-            userEdit.addEventListener("click", function() {
+    users.map((user) => {
+        const { id } = user;
+        let rowElement = null;
+        if (editId === id) {
+            rowElement = EditRow(user, (updateData) => {
+                console.log('Values to save', updateData);
+                fetch(`http://localhost:8000/users/${id}`, {
+                        method: 'put',
+                        headers: {
+                            'Content-Type': 'application/json; charset=UTF-8',
+                        },
+                        body: JSON.stringify(updateData)
+                    })
+                    .then(res => res.json())
+                    .then(res => {
+                        console.log('Updated', res);
+                    })
+                    .catch(err => {
+                        console.log('Update err', err);
+                    });
+            })
+        } else {
+            rowElement = Row(user, () => {
                 const answer = window.confirm("You want to change data?")
                 if (answer) {
-                    editId = index;
+                    editId = user.id;
                     renderUserRow(users);
                 } else {
                     console.log('2')
                 }
-            });
-        }
-        let userSave = document.getElementById(`userSave-${index}`);
-        if (!userSave) {
-            userSave = document.createElement('button');
-            userSave.innerHTML = "SAVE";
-            userSave.id = `userSave-${index}`;
-            userSave.addEventListener("click", function() {
-                console.log(rowElement);
-                fetch('http://localhost:8000/users/', {
-                    method: 'post',
-                    body: JSON.stringify(index)
-                })
             })
         }
 
-        if (index === editId) {
-            userName.parentNode.removeChild(userName);
-            userName = document.createElement('input')
-            userName.value = name;
-
-            userAge.parentNode.removeChild(userAge);
-            userAge = document.createElement('input')
-            userAge.value = age;
-
-            userPrice.parentNode.removeChild(userPrice)
-            userPrice = document.createElement('input')
-            userPrice.value = price;
-        }
-
-        userName.innerText = name;
-        userAge.innerText = age;
-        userPrice.innerText = price;
-
-        rowElement.appendChild(userName);
-        rowElement.appendChild(userAge);
-        rowElement.appendChild(userPrice);
-        rowElement.appendChild(userEdit);
         table.appendChild(rowElement);
-        rowElement.appendChild(userSave);
     })
 };
+
 (function() {
     fetch('http://localhost:8000/users/')
         .then(resp => {

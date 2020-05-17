@@ -19,49 +19,28 @@
       "id": 3
     },
     {
-      "name": "gago",
-      "age": "23",
-      "price": "58049",
-      "id": 5
+      "name": "Tamush",
+      "age": "24",
+      "price": "100.000",
+      "id": 4
     },
     {
-      "name": "Arshak",
-      "age": "29",
-      "price": "893274",
-      "id": 6
-    },
-    {
-      "name": "Arshak",
-      "age": "29",
-      "price": "893274",
-      "id": 7
-    },
-    {
-      "name": "Garik",
-      "age": "23",
-      "price": "24.000",
+      "name": "mapasd1",
+      "price": "v80",
+      "age": "",
       "id": 8
     },
     {
-      "name": "Garik",
-      "age": "87",
-      "price": "12098",
+      "name": "Ars",
+      "price": "78666",
+      "age": "29",
       "id": 9
     },
     {
+      "name": "hj",
+      "price": "190",
+      "age": "25",
       "id": 10
-    },
-    {
-      "name": "Alex",
-      "age": "26",
-      "price": "160.000",
-      "id": 11
-    },
-    {
-      "name": "",
-      "age": "",
-      "price": "",
-      "id": 12
     }
   ]
 }
